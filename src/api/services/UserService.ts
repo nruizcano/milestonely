@@ -60,13 +60,6 @@ export class UserService extends GenericService<User> {
     if (error) throw new Error(error.message)
   }
 
-  public async changePassword(email: string): Promise<void> {
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/reset-password`,
-    })
-    if (error) throw new Error(error.message)
-  }
-
   public async uploadPfp(file: File, userId: string): Promise<void> {
     const fileExt = file.name.split('.').pop()
     const fileName = `${new Date().toISOString()}-${userId}.${fileExt}`
@@ -99,7 +92,7 @@ export class UserService extends GenericService<User> {
       return data?.publicUrl ?? localDefaultPfp
     }
 
-    const filePath = `/${userId}/${userFiles[userFiles.length - 1].name}`
+    const filePath = `/${userId}/${userFiles[numFiles - 1].name}`
 
     const { data: url } = await supabase.storage.from(pfpBucketName).getPublicUrl(filePath)
 

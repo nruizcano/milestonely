@@ -37,7 +37,7 @@ const handleLogout = async () => {
         <li @click="handleClick()">
           <router-link to="/my-account">My account</router-link>
         </li>
-        <li @click="(handleClick(), handleLogout())">
+        <li id="logout" @click="(handleClick(), handleLogout())">
           <router-link to="/sign-in">Logout</router-link>
         </li>
       </ul>

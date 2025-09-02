@@ -32,6 +32,9 @@ const userMap: Record<string, User> = {}
 const projectMap: Record<string, Project> = {}
 
 const isDataLoading = ref(true)
+defineExpose({
+  isDataLoading
+})
 
 const activeColumns = computed(() => Object.values(props.columns).filter(Boolean).length)
 

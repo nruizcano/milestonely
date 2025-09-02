@@ -17,6 +17,7 @@ supabase
 
 /cypress/videos/
 /cypress/screenshots/
+/**/__tests__/__snapshots__/
 
 # Editor directories and files
 .vscode

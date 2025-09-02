@@ -42,6 +42,9 @@ jobs:
     name: Unit tests
     runs-on: ubuntu-latest
     needs: setup-and-build
+    env:
+        VITE_NEXT_PUBLIC_SUPABASE_URL: https://dummy.supabase.co
+        VITE_NEXT_PUBLIC_SUPABASE_ANON_KEY: dummykey
     steps:
       - name: Checkout
         uses: actions/checkout@v3

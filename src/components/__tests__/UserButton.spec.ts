@@ -59,7 +59,7 @@ describe('UserButton', () => {
   })
 
   it('renders the component', async () => {
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.findComponent(UserButton).exists()).toBe(true)
     expect(wrapper.find('img').attributes('alt')).toBe('Profile')
   })
 

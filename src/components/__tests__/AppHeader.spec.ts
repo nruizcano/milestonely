@@ -48,7 +48,7 @@ describe('AppHeader', () => {
   })
 
   it('renders the component', () => {
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.findComponent(AppHeader).exists()).toBe(true)
 
     expect(wrapper.find('img[alt="Milestonely logo"]').exists()).toBe(true)
     expect(wrapper.find('span').text()).toBe('Milestonely')

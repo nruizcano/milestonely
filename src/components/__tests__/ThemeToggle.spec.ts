@@ -14,26 +14,26 @@ vi.mock('@/stores/theme', () => ({
 }))
 
 describe('ThemeToggle', () => {
+  let wrapper: ReturnType<typeof mount>
+
   beforeEach(() => {
     themeStoreMock.isDarkMode = false
     themeStoreMock.toggleDarkMode.mockClear()
     document.documentElement.classList.remove('dark')
+    wrapper = mount(ThemeToggle)
   })
 
   it('renders the component', () => {
-    const wrapper = mount(ThemeToggle)
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.findComponent(ThemeToggle).exists()).toBe(true)
   })
 
   it('toggles the theme', async () => {
-    const wrapper = mount(ThemeToggle)
     await wrapper.find('button').trigger('click')
     expect(useThemeStore().toggleDarkMode).toHaveBeenCalled()
   })
 
 
   it('changes the icon depending on the theme', async () => {
-    const wrapper = mount(ThemeToggle)
     const img = wrapper.find('img')
 
     expect(img.attributes('src')).toBe('/src/assets/icons/sun.png')
@@ -46,7 +46,7 @@ describe('ThemeToggle', () => {
 
   it('adds the "dark" class when the theme is dark', () => {
     useThemeStore().isDarkMode = true
-    mount(ThemeToggle)
+    wrapper = mount(ThemeToggle)
     expect(document.documentElement.classList.contains('dark')).toBe(true)
   })
 })

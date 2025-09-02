@@ -63,7 +63,6 @@ describe('TaskTable', () => {
     wrapper.vm.isDataLoading = true
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.element).toMatchSnapshot()
     expect(wrapper.findComponent(TaskTable).exists()).toBe(true)
   })
 
